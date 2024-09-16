@@ -6,7 +6,7 @@ const IssuesPage = () => {
   return (
     <div>
       <Link href="/">
-        <Button variant="classic">Edit profile</Button>{" "}
+        <Button>New Issue</Button>{" "}
       </Link>
     </div>
   );
