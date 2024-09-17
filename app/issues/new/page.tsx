@@ -6,8 +6,8 @@
 //   - After the submission, it navigates the user to the home page (router.push("/")).
 "use client";
 
-import React, { useActionState } from "react";
-import { Button, TextField } from "@radix-ui/themes";
+import React, { useActionState, useState } from "react";
+import { Button, Callout, TextField } from "@radix-ui/themes";
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import { useForm, Controller } from "react-hook-form";
@@ -22,26 +22,38 @@ interface IssuesForm {
 const NewIssuesPage = () => {
   const { register, control, handleSubmit } = useForm<IssuesForm>();
   const router = useRouter();
+  const [error, setError] = useState("");
 
   return (
-    <form
-      className="max-w-xl space-y-3"
-      onSubmit={handleSubmit(async (data) => {
-        await axios.post("/api/issues", data);
-        router.push("/");
-      })}
-    >
-      {" "}
-      <TextField.Root placeholder="Title" {...register("title")} />
-      <Controller
-        name="description"
-        control={control}
-        render={({ field }) => (
-          <SimpleMDE placeholder="Description" {...field} />
-        )}
-      />
-      <Button>Submit New Issue</Button>
-    </form>
+    <div className="max-w-xl">
+      {error && (
+        <Callout.Root color="red" className="mb-3">
+          <Callout.Text>{error}</Callout.Text>
+        </Callout.Root>
+      )}
+      <form
+        className=" space-y-3"
+        onSubmit={handleSubmit(async (data) => {
+          try {
+            await axios.post("/api/issues", data);
+            router.push("/");
+          } catch (error) {
+            setError("An unexpected error occurred.");
+          }
+        })}
+      >
+        {" "}
+        <TextField.Root placeholder="Title" {...register("title")} />
+        <Controller
+          name="description"
+          control={control}
+          render={({ field }) => (
+            <SimpleMDE placeholder="Description" {...field} />
+          )}
+        />
+        <Button>Submit New Issue</Button>
+      </form>
+    </div>
   );
 };
 
