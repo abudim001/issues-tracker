@@ -6,17 +6,16 @@
 //   - After the submission, it navigates the user to the home page (router.push("/")).
 "use client";
 
-import ErrorMessages from "@/app/Components/ErrorMessages";
-import Spinner from "@/app/Components/Spinner";
+import { ErrorMessages, Spinner } from "@/app/Components";
 import { createIssueSchema } from "@/app/ValidationSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Callout, TextField } from "@radix-ui/themes";
 import axios from "axios";
 import "easymde/dist/easymde.min.css";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import dynamic from "next/dynamic";
 import { z } from "zod";
 
 type IssuesForm = z.infer<typeof createIssueSchema>;

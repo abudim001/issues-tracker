@@ -1,12 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import React from "react";
-import { AiFillBug } from "react-icons/ai";
-import { usePathname } from "next/navigation";
-import classNames from "classnames";
-import { useState } from "react";
 import { Button } from "@radix-ui/themes";
+import classNames from "classnames";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { AiFillBug } from "react-icons/ai";
 import { CiDark } from "react-icons/ci";
 
 const links = [

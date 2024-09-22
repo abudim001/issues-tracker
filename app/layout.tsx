@@ -1,11 +1,11 @@
+import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
-import "./theme-config.css";
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import { Inter } from "next/font/google";
-import NavBar from "./NavBar";
-import { Theme, ThemePanel } from "@radix-ui/themes";
+import localFont from "next/font/local";
 import "./globals.css";
+import NavBar from "./NavBar";
+import "./theme-config.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

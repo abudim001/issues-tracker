@@ -1,7 +1,4 @@
-import { Table } from "@radix-ui/themes";
-import React from "react";
-import IssueStatusBadge from "../Components/IssueStatusBadge";
-import { Skeleton } from "@radix-ui/themes";
+import { Skeleton, Table } from "@radix-ui/themes";
 import IssuesToolBar from "./IssuesToolBar";
 
 const LoadingIssuesPage = () => {
