@@ -45,4 +45,7 @@ const IssuesPage = async () => {
   );
 };
 
+export const dynamic = "force-dynamic";
+// export const recalidate = 0;
+
 export default IssuesPage;

@@ -3,7 +3,7 @@ import { Badge } from "@radix-ui/themes";
 
 const statuesMap: Record<
   Status,
-  { label: String; color: "red" | "violet" | "green" }
+  { label: string; color: "red" | "violet" | "green" }
 > = {
   OPEN: { label: "Open", color: "red" },
   IN_PROGRESS: { label: "In Progress", color: "violet" },

@@ -6,10 +6,9 @@
 //     - If validation passes, it saves the data (title and description) to the database using prisma.
 //     - If validation fails, it sends an error message back to the frontend.
 
-import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
-import prisma from "@/prisma/client";
 import { IssueSchema } from "@/app/ValidationSchemas";
+import prisma from "@/prisma/client";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
