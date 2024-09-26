@@ -1,6 +1,13 @@
 "use client";
 
-import { Box, Button, Container, Flex } from "@radix-ui/themes";
+import {
+  Avatar,
+  Box,
+  Button,
+  Container,
+  DropdownMenu,
+  Flex,
+} from "@radix-ui/themes";
 import classNames from "classnames";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -55,16 +62,33 @@ const NavBar = () => {
           </Flex>
 
           <Flex gap="3" align="center">
-            {" "}
+            <Button className="space-x-20" onClick={toggleDarkMode}>
+              <CiDark />
+            </Button>{" "}
             {status === "authenticated" && (
-              <Link href="/api/auth/signout">Sign out</Link>
+              <DropdownMenu.Root>
+                <DropdownMenu.Trigger>
+                  <Avatar
+                    src={session.user!.image!}
+                    fallback="?"
+                    size="2"
+                    radius="full"
+                    className="cursor-pointer"
+                  />
+                </DropdownMenu.Trigger>
+
+                <DropdownMenu.Content>
+                  <DropdownMenu.Label>{session.user?.email}</DropdownMenu.Label>
+                  <DropdownMenu.Item>
+                    {" "}
+                    <Link href="/api/auth/signout">Sign out</Link>
+                  </DropdownMenu.Item>
+                </DropdownMenu.Content>
+              </DropdownMenu.Root>
             )}
             {status === "unauthenticated" && (
               <Link href="/api/auth/signin">Sign In</Link>
             )}
-            <Button className="space-x-20" onClick={toggleDarkMode}>
-              <CiDark />
-            </Button>
           </Flex>
         </Flex>
       </Container>
