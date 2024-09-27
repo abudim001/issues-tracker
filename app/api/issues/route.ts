@@ -7,10 +7,18 @@
 //     - If validation fails, it sends an error message back to the frontend.
 
 import { IssueSchema } from "@/app/ValidationSchemas";
+import { auth } from "@/auth";
 import prisma from "@/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
+
+  const session = await auth();
+
+  if(!session){
+   return NextResponse.json({Message: 'Not Authenticated'}, {status: 401})
+  }
+  
   const body = await request.json();
   const validation = IssueSchema.safeParse(body);
 
