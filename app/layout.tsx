@@ -36,7 +36,8 @@ export default function RootLayout({
           >
             <NavBar></NavBar>
             <main className="p-5">
-              <Container>{children}</Container>
+              {children}
+              {/* <Container>{children}</Container> */}
             </main>
             {/* <ThemePanel /> */}
           </Theme>
