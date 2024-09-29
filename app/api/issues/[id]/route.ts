@@ -8,11 +8,11 @@ export async function PATCH(
   { params }: { params: { id: string } }
 ) {
 
-   const session = await auth();
+  //  const session = await auth();
 
-   if(!session){
-    return NextResponse.json({Message: 'Not Authenticated'}, {status: 401})
-   }
+  //  if(!session){
+  //   return NextResponse.json({Message: 'Not Authenticated'}, {status: 401})
+  //  }
 
   const body = await request.json();
   const validation = IssueSchema.safeParse(body);
@@ -40,11 +40,11 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   // Check for an active session using the auth function
-  const session = await auth()
+  // const session = await auth()
 
-  if (!session) {
-    return NextResponse.json({ message: "Not authenticated" }, { status: 401 })
-  }
+  // if (!session) {
+  //   return NextResponse.json({ message: "Not authenticated" }, { status: 401 })
+  // }
 
   const issue = await prisma.issue.findUnique({
     where: { id: parseInt(params.id) },

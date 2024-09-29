@@ -6,6 +6,7 @@ import IssueDetails from "./IssueDetails";
 import DeleteIssueButton from "../_components/DeleteIssueButton";
 
 import { auth } from "@/auth"; // Import the auth function to check for the session
+import AssigneeSelect from "./AssigneeSelect";
 
 interface Props {
   params: { id: string };
@@ -26,8 +27,10 @@ const IssueDetailsPage = async ({ params }: Props) => {
         <IssueDetails issue={issue} />
       </Box>
       <Flex direction="column" gap="4">
+        {/* <EditIssueButton issueId={issue.id} /> */}
         {session ? ( // Conditionally render the buttons based on the session
           <>
+            <AssigneeSelect />
             <EditIssueButton issueId={issue.id} />
             <DeleteIssueButton issueId={issue.id} />
           </>

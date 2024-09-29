@@ -47,7 +47,7 @@ const IssueForm = async ({ issue }: { issue?: Issue }) => {
       router.refresh();
     } catch (error) {
       setSubmiting(false);
-      setError("An unexpected error occurredu.");
+      setError("An unexpected error occurred.");
     }
   });
 
