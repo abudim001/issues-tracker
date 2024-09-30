@@ -6,6 +6,7 @@ import "./globals.css";
 import NavBar from "./NavBar";
 import "./theme-config.css";
 import AuthProvider from "./auth/Provider";
+import QueryClientProvider from "./QueryClientProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,22 +27,24 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body>
-        <AuthProvider>
-          <Theme
-            accentColor="violet"
-            panelBackground="solid"
-            radius="large"
-            scaling="110%"
-            // appearance="dark"
-          >
-            <NavBar></NavBar>
-            <main className="p-5">
-              {children}
-              {/* <Container>{children}</Container> */}
-            </main>
-            {/* <ThemePanel /> */}
-          </Theme>
-        </AuthProvider>
+        <QueryClientProvider>
+          <AuthProvider>
+            <Theme
+              accentColor="violet"
+              panelBackground="solid"
+              radius="large"
+              scaling="110%"
+              // appearance="dark"
+            >
+              <NavBar></NavBar>
+              <main className="p-5">
+                {children}
+                {/* <Container>{children}</Container> */}
+              </main>
+              {/* <ThemePanel /> */}
+            </Theme>
+          </AuthProvider>
+        </QueryClientProvider>
       </body>
     </html>
   );
