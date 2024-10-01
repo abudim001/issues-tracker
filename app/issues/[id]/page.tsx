@@ -30,7 +30,7 @@ const IssueDetailsPage = async ({ params }: Props) => {
         {/* <EditIssueButton issueId={issue.id} /> */}
         {session ? ( // Conditionally render the buttons based on the session
           <>
-            <AssigneeSelect />
+            <AssigneeSelect issue={issue} />
             <EditIssueButton issueId={issue.id} />
             <DeleteIssueButton issueId={issue.id} />
           </>
