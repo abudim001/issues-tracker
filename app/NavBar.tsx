@@ -1,3 +1,6 @@
+//Task: Make this navBar links change when changing
+//     the theme of the entire project.
+
 "use client";
 
 import {
