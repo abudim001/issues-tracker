@@ -8,15 +8,18 @@ import DeleteIssueButton from "../_components/DeleteIssueButton";
 import { auth } from "@/auth"; // Import the auth function to check for the session
 import AssigneeSelect from "./AssigneeSelect";
 import { Issue } from "@prisma/client";
+import { cache } from "react";
 
 interface Props {
   params: { id: string };
 }
 
+const FetchUser = cache((issueId: number) =>
+  prisma.issue.findUnique({ where: { id: issueId } })
+);
+
 const IssueDetailsPage = async ({ params }: Props) => {
-  const issue = await prisma.issue.findUnique({
-    where: { id: parseInt(params.id) },
-  });
+  const issue = await FetchUser(parseInt(params.id));
 
   if (!issue) notFound(); // If the issue is not found, trigger a 404 response
 
@@ -44,9 +47,7 @@ const IssueDetailsPage = async ({ params }: Props) => {
 };
 
 export async function generateMetadata({ params }: Props) {
-  const issue = await prisma.issue.findUnique({
-    where: { id: parseInt(params.id) },
-  });
+  const issue = await FetchUser(parseInt(params.id));
 
   return {
     title: issue?.title,
