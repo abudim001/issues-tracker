@@ -7,6 +7,7 @@ import DeleteIssueButton from "../_components/DeleteIssueButton";
 
 import { auth } from "@/auth"; // Import the auth function to check for the session
 import AssigneeSelect from "./AssigneeSelect";
+import { Issue } from "@prisma/client";
 
 interface Props {
   params: { id: string };
@@ -41,5 +42,16 @@ const IssueDetailsPage = async ({ params }: Props) => {
     </Grid>
   );
 };
+
+export async function generateMetadata({ params }: Props) {
+  const issue = await prisma.issue.findUnique({
+    where: { id: parseInt(params.id) },
+  });
+
+  return {
+    title: issue?.title,
+    description: "Details of issue " + issue?.id,
+  };
+}
 
 export default IssueDetailsPage;
