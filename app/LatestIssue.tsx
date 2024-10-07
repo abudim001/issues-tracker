@@ -48,3 +48,4 @@ const LatestIssue = async () => {
 };
 
 export default LatestIssue;
+export const dynamic = "force-dynamic";
