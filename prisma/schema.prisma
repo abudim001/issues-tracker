@@ -19,7 +19,7 @@ datasource db {
 }
 
 model Issue {
-  id             String   @id @default(uuid()) // Changed to UUID
+  id             Int      @id @default(autoincrement()) // Changed to UUID
   title          String // Removed @db.VarChar(255)
   description    String // Removed @db.Text
   status         Status   @default(OPEN)
