@@ -24,7 +24,6 @@ model Issue {
   description    String // Removed @db.Text
   status         Status   @default(OPEN)
   createdAt      DateTime @default(now())
-  man            String
   updatedAt      DateTime @updatedAt
   assignToUserId String?  @db.VarChar(255) // Ensure this field is defined
   assignToUser   User?    @relation(fields: [assignToUserId], references: [id])
