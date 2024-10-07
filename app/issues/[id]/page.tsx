@@ -1,14 +1,13 @@
 import prisma from "@/prisma/client";
 import { Box, Flex, Grid } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
+import DeleteIssueButton from "../_components/DeleteIssueButton";
 import EditIssueButton from "./EditIssueButton";
 import IssueDetails from "./IssueDetails";
-import DeleteIssueButton from "../_components/DeleteIssueButton";
 
 import { auth } from "@/auth"; // Import the auth function to check for the session
-import AssigneeSelect from "./AssigneeSelect";
-import { Issue } from "@prisma/client";
 import { cache } from "react";
+import AssigneeSelect from "./AssigneeSelect";
 
 interface Props {
   params: { id: string };

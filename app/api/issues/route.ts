@@ -7,7 +7,6 @@
 //     - If validation fails, it sends an error message back to the frontend.
 
 import { IssueSchema } from "@/app/ValidationSchemas";
-import { auth } from "@/auth";
 import prisma from "@/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 

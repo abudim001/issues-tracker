@@ -11,6 +11,7 @@ generator client {
 
 // prisma/schema.prisma
 datasource db {
+  //new
   provider = "postgresql"
   url      = env("DATABASE_URL")
   // uncomment next line if you use Prisma <5.10
@@ -23,6 +24,7 @@ model Issue {
   description    String // Removed @db.Text
   status         Status   @default(OPEN)
   createdAt      DateTime @default(now())
+  man            String
   updatedAt      DateTime @updatedAt
   assignToUserId String?  @db.VarChar(255) // Ensure this field is defined
   assingToUser   User?    @relation(fields: [assignToUserId], references: [id])
