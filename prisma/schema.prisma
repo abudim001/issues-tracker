@@ -18,14 +18,14 @@ datasource db {
 }
 
 model Issue {
-  id             Int      @id @default(autoincrement())
-  title          String   @db.VarChar(255)
-  description    String   @db.Text
+  id             String   @id @default(uuid()) // Changed to UUID
+  title          String // Removed @db.VarChar(255)
+  description    String // Removed @db.Text
   status         Status   @default(OPEN)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
   assignToUserId String?  @db.VarChar(255) // Ensure this field is defined
-  assignToUser   User?    @relation(fields: [assignToUserId], references: [id])
+  assingToUser   User?    @relation(fields: [assignToUserId], references: [id])
 }
 
 enum Status {
@@ -40,12 +40,12 @@ model Account {
   type              String
   provider          String
   providerAccountId String  @map("provider_account_id")
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String? // Removed @db.Text
+  access_token      String? // Removed @db.Text
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String? // Removed @db.Text
   session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
